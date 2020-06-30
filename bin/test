@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+ruby -I test test/bundler/why_test.rb
