@@ -18,7 +18,7 @@ To test a change, in the first tab I make a WIP commit then in the second tab I
 ```
 rm -rf /Users/jared/git/banana/.bundle/plugin
 bundler plugin install bundler-why \
-  --git file:///Users/jared/git/bundler-why \
+  --git file:///Users/jared/git/bundler-why --branch trunk \
   --verbose --retry=1
 bundle why tzinfo
 ```
