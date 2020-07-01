@@ -12,7 +12,7 @@ business_time -> tzinfo
 
 ## License
 
-[Do No Harm License][LICENSE.md]
+[Do No Harm License](LICENSE.md)
 
 By using this software you accept the terms of the license.
 
