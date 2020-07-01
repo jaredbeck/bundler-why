@@ -18,18 +18,11 @@ module Bundler
 
       private
 
-      # `Bundler.load` is a memoized method, so it's OK if we call it a few
-      # times.
-      # @return Bundler::Runtime
-      def runtime
-        Bundler.load
-      end
-
       # @param spec_set Bundler::SpecSet
       # @param gem_name String
       # @return Bundler::StubSpecification
-      def find_one_spec_in_set(_spec_set, gem_name)
-        specs = runtime.specs[gem_name]
+      def find_one_spec_in_set(spec_set, gem_name)
+        specs = spec_set[gem_name]
         if specs.length == 1
           specs.first
         else
@@ -49,6 +42,7 @@ module Bundler
       # @param gem_name String
       # @void
       def why(gem_name)
+        runtime = Bundler.load
         spec_set = runtime.specs
         spec = find_one_spec_in_set(spec_set, gem_name)
         traverse(spec_set, spec)
