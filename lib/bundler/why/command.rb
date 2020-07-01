@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 require 'byebug'
 $stdout.sync = true
 
 module Bundler
   module Why
     class Command < ::Bundler::Plugin::API
-      command "why"
+      command 'why'
 
-      def exec(command, args)
+      def exec(_command, args)
         if args.length == 1
           why(args.first)
         else
@@ -26,7 +28,7 @@ module Bundler
       # @param spec_set Bundler::SpecSet
       # @param gem_name String
       # @return Bundler::StubSpecification
-      def find_one_spec_in_set(spec_set, gem_name)
+      def find_one_spec_in_set(_spec_set, gem_name)
         specs = runtime.specs[gem_name]
         if specs.length == 1
           specs.first

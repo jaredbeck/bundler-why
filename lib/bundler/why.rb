@@ -1,5 +1,7 @@
-require "bundler/why/command"
-require "bundler/why/version"
+# frozen_string_literal: true
+
+require 'bundler/why/command'
+require 'bundler/why/version'
 
 module Bundler
   module Why

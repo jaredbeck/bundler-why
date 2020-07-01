@@ -1,0 +1,348 @@
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+# Used consistently, both leading and trailing styles are valid, but
+# Singlebrook happens to use the trailing style.
+Layout/DotPosition:
+  EnforcedStyle: trailing
+
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+
+# This cop has a bug in 0.52.0
+# https://github.com/bbatsov/rubocop/issues/5224
+Layout/EmptyLinesAroundArguments:
+  Enabled: false
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
+# Indent arrays so that the first element is relative to the first position of
+# the line where the opening bracket is.
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/LineLength:
+  Max: 100
+
+# In a multiline method call, put the closing parenthesis on its own line.
+# The first argument may either be on the first line, or the second. Both of the
+# following are correct:
+#
+# ```
+# # A. correct
+# create(:user,
+#   client: foo,
+#   long_line: blah
+# )
+#
+# # B. also correct
+# create(
+#   :user,
+#   client: foo,
+#   long_line: blah
+# )
+#
+# # C. not preferred
+# user = create :user,
+#   client: foo,
+#   long_line: blah
+# ```
+#
+# Rubocop supports B, but not A. This project allows both, so this cop is
+# disabled.
+Layout/MultilineMethodCallBraceLayout:
+  Enabled: false
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+# This cop has a bug in 0.83.0
+# https://github.com/rubocop-hq/rubocop/issues/7962
+Lint/ParenthesesAsGroupedExpression:
+  Exclude:
+    - app/autoload/compliance/programs/pre_qar_to_qar/preconditions.rb
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
+
+Lint/RaiseException:
+  Enabled: true
+
+# Sometimes splat is convenient, sometimes unnecessary. Too subtle to lint.
+Lint/RedundantSplatExpansion:
+  Enabled: false
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Metrics/AbcSize:
+  Exclude:
+    - 'db/migrate/*'
+    - 'spec/support/assemblies/**/*'
+
+# Compared to metrics like `AbcSize` or `CyclomaticComplexity`, number of
+# lines is not a useful metric.
+Metrics/ClassLength:
+  Enabled: false
+
+# Compared to metrics like `AbcSize` or `CyclomaticComplexity`, number of
+# lines is not a useful metric.
+Metrics/BlockLength:
+  Enabled: false
+
+# Compared to metrics like `AbcSize` or `CyclomaticComplexity`, the number of
+# lines in a method is not a useful metric. It's common to have very long
+# methods (> 50 lines) which are quite simple. For example, a method that
+# returns a long string with only a few interpolations.
+Metrics/MethodLength:
+  Enabled: false
+
+# Compared to metrics like `AbcSize` or `CyclomaticComplexity`, the number of
+# lines in a module is not a useful metric.
+Metrics/ModuleLength:
+  Enabled: false
+
+# Too strict. Not all methods named `set_x` would make sense named `x=`.
+Naming/AccessorMethodName:
+  Enabled: false
+
+# It is a decades-old convention to use EOS as a heredoc delimiter. There is
+# not enough value in changinge this convention. SQL should still be used as
+# a delimiter when appropriate.
+Naming/HeredocDelimiterNaming:
+  Enabled: false
+
+# It is reasonable to use mathematical symbols in comments, or to relish what
+# little multilingualism we have in America by using native spellings, like
+# "façade" or "naïve".
+Style/AsciiComments:
+  Enabled: false
+
+# Giving the ivar a leading underscore implies that it should not be
+# set/referencd outside of the memoization method.
+Naming/MemoizedInstanceVariableName:
+  EnforcedStyleForLeadingUnderscores: required
+
+# Sometimes two chars, or even one, is acceptable.
+Naming/MethodParameterName:
+  Enabled: false
+
+# Use numbers wherever you like in your variables. Who cares.
+Naming/VariableNumber:
+  Enabled: false
+
+# safe_load is necessary for end-user input, and unnecessary for files
+# written by devs. The export config, for example, is written by devs.
+Security/YAMLLoad:
+  Exclude:
+    - 'app/services/clients/exporter.rb'
+
+# Use the semantic style. If a block has side effects use `do`, and if it is
+# pure use `{}`. This style is too nuanced for a linter, so the cop is
+# disabled.
+Style/BlockDelimiters:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: nested
+
+Style/Documentation:
+  Exclude:
+    - 'app/controllers/**/*'
+    - 'app/helpers/**/*'
+    - 'app/mailers/**/*'
+    - 'db/migrate/**/*'
+    - 'spec/**/*'
+
+# Use double negation wherever it would otherwise be impractical to convert
+# a value to an actual boolean.
+Style/DoubleNegation:
+  Enabled: false
+
+Style/EmptyElse:
+  EnforcedStyle: empty
+
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+Style/ExponentialNotation:
+  Enabled: false
+
+# Concerns:
+# 1. In 0.52.0, this complains about `strftime('%x')`. Annotating tokens in
+#    e.g. strftime would just be duplicating documenation.
+# 2. Annotating tokens in long format strings could make such lines very long.
+# 3. Annotation is not necessary in format strings with small numbers of tokens.
+Style/FormatStringToken:
+  Enabled: false
+
+# The decision of when to use a guard clause is too nuanced for a linter.
+Style/GuardClause:
+  Enabled: false
+
+# `hash.keys.each` is totally fine.
+Style/HashEachMethods:
+  Enabled: false
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+# Avoid postfix (aka. modifier) conditional operator, except on the simplest
+# of lines. This is too nuanced for a linter.
+Style/IfUnlessModifier:
+  Enabled: false
+
+# When using a multiline proc in a hash (eg. `validates`), I don't want to use
+# lambda because then I'd have commas immediately after the "end", like `end,`.
+Style/Lambda:
+  Enabled: false
+
+# There is a known issue with `MixinGrouping` in rubocop 0.48.0
+# https://github.com/bbatsov/rubocop/issues/4172
+Style/MixinGrouping:
+  Enabled: false
+
+# Disabled, because we like to write tests like:
+#
+# expect(
+#   foo :bar, :baz
+# ).to # whatever
+#
+# When there's only one argument, and it's on its own line, there's no problem.
+Style/NestedParenthesizedCalls:
+  Enabled: false
+
+Style/Next:
+  MinBodyLength: 5 # The default of 3 is too low for my taste.
+
+# This is a new cop in rubocop 0.41, and I'm not sure if I want to adopt it yet.
+Style/NumericLiteralPrefix:
+  Enabled: false
+
+# Use `x > 0` because it is more specific than `x.positive?`.
+# However, `x.zero?` is acceptable because it is specific enough.
+Style/NumericPredicate:
+  Enabled: false
+
+# This cop complains about lovely things like:
+# `gsub(/(\w*)/) { $1.capitalize }`
+# I wouldn't want to write this differently.
+Style/PerlBackrefs:
+  Enabled: false
+
+Style/RedundantFetchBlock:
+  Enabled: true
+
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+
+# Disabled because it has a bug in 0.85.0
+# https://github.com/rubocop-hq/rubocop/pull/8073
+Style/RedundantRegexpEscape:
+  Enabled: false
+
+# The decision of when to use slashes `/foo/` or percent-r `%r{foo}` is too
+# subtle to lint. Use whichever requires fewer backslash escapes.
+Style/RegexpLiteral:
+  Enabled: false
+
+# Disabled because it is overzealous in 0.50.0.
+# https://github.com/bbatsov/rubocop/issues/4731
+Style/SafeNavigation:
+  Enabled: false
+
+# The new recommendation to use `acc` and `elem` instead of `a` and `e` is fine,
+# if someone wants to change it. For now, it's fine to keep `a` and `e`.
+Style/SingleLineBlockParams:
+  Methods:
+    - reduce:
+        - a
+        - e
+    - inject:
+        - a
+        - e
+
+Style/SlicingWithRange:
+  Enabled: true
+
+# This cop wants us to use `warn` instead of `$stderr.puts` but that change
+# would be neither compatible nor desirable.
+# https://github.com/bbatsov/rubocop/issues/4888
+Style/StderrPuts:
+  Enabled: false
+
+# Use `%i[]` symbol arrays frequently, they are often good. Too subtle to lint,
+# though.
+Style/SymbolArray:
+  Enabled: false
+
+Style/SymbolProc:
+  Exclude:
+    # cancan 3.0.0 has a bug that prevents us from using symbol-to-proc
+    # https://github.com/CanCanCommunity/cancancan/issues/584
+    - app/autoload/abilities/universal.rb
+
+Style/TernaryParentheses:
+  EnforcedStyle: require_parentheses_when_complex
+
+# This cop has a bug in rubocop 0.62.0:
+# https://github.com/rubocop-hq/rubocop/issues/6627
+Style/TrailingCommaInArguments:
+  Enabled: false
+
+# Predicate methods, aka. question-mark methods, such as `def x?; @x; end` are
+# acceptable. See https://github.com/bbatsov/rubocop/issues/2736 for discussion.
+Style/TrivialAccessors:
+  AllowPredicates: true
+
+# Avoid postfix loops (e.g. `x until y`) except in utterly simple situations.
+# This is too nuanced for a linter.
+Style/WhileUntilModifier:
+  Enabled: false
+
+# `%w` is good, and should be used often, but it's too subtle to lint.
+# Consider the following:
+#
+# ```ruby
+# MODULE_ACTIVENESS = [
+#   ['All Modules', ''],
+#   ['Active', 'true'],
+#   ['Inactive', 'false']
+# ].freeze
+# ```
+#
+# We can't use `%w` on the first option, therefore we don't want to use it on
+# the subsequent options.
+Style/WordArray:
+  Enabled: false
+
+# We would like to use this cop, but it doesn't work in 0.49.
+Style/YodaCondition:
+  Enabled: false
+
+# Consider A and B below. A is more like normal English than B.
+#
+# ```
+# # A
+# qar_modules.length > 0 || question_assignments.length > 0
+# # B
+# !qar_modules.empty? || !question_assignments.empty?
+# ```
+Style/ZeroLengthPredicate:
+  Enabled: false

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Bundler
   module Why
     def self.gem_version

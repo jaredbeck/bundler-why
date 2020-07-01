@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
+bundle exec rubocop
 ruby -I test test/bundler/why_test.rb
