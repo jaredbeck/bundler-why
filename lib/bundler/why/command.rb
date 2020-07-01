@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-require 'byebug'
-$stdout.sync = true
-
 module Bundler
   module Why
+    # Registers and defines the `why` command.
     class Command < ::Bundler::Plugin::API
       command 'why'
 

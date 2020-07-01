@@ -161,11 +161,7 @@ Style/ClassAndModuleChildren:
 
 Style/Documentation:
   Exclude:
-    - 'app/controllers/**/*'
-    - 'app/helpers/**/*'
-    - 'app/mailers/**/*'
-    - 'db/migrate/**/*'
-    - 'spec/**/*'
+    - 'test/**/*'
 
 # Use double negation wherever it would otherwise be impractical to convert
 # a value to an actual boolean.
