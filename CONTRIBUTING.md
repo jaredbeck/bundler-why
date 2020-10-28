@@ -10,13 +10,16 @@ The "Running your plugin locally" section of the
 [How to write a Bundler plugin][1] instructions seems to be wrong, per 
 https://github.com/rubygems/rubygems/issues/3209#issuecomment-652107633
 
-However, `--git` seems to work. So, I open two tabs, one in the bundler-why
-directory, the second in some project `banana` with a meaningful gemfile.
+However, `--git` seems to work.
+(https://github.com/rubygems/bundler-site/pull/464)
+
+So, I open two tabs, one in the bundler-why directory, the second in some
+project with a meaningful gemfile.
 
 To test a change, in the first tab I make a WIP commit then in the second tab I
 
 ```
-rm -rf /Users/jared/git/banana/.bundle/plugin
+rm -rf /Users/jared/git/my_project/.bundle/plugin
 bundler plugin install bundler-why \
   --git file:///Users/jared/git/bundler-why --branch trunk \
   --verbose --retry=1
