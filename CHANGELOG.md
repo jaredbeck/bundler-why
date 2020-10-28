@@ -3,6 +3,12 @@
 This project follows [semver 2.0.0](http://semver.org/spec/v2.0.0.html) and the
 recommendations of [keepachangelog.com](http://keepachangelog.com/).
 
+## 0.1.2
+
+### Fixed
+
+- Better error message when gem is not found
+
 ## 0.1.1
 
 ### Fixed
