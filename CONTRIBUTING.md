@@ -23,8 +23,9 @@ bundler plugin install bundler-why \
 bundle why tzinfo
 ```
 
-Deleting the `plugin` directory is a workaround for the fact that [bundler
-does not provide a command to uninstall plugins][2].
+Deleting the `plugin` directory is a workaround for the fact that [bundler does
+not provide a command to uninstall plugins][2], though it will soon, in 2.2.0.
+(https://github.com/rubygems/rubygems/blob/master/bundler/CHANGELOG.md#220rc1-july-2-2020)
 
 [1]: https://bundler.io/v2.0/guides/bundler_plugins.html
 [2]: https://github.com/rubygems/rubygems/issues/3187

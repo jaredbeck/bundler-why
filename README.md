@@ -1,6 +1,6 @@
 # Bundler::Why
 
-Explains the presence of a dependency.
+Explains the presence of a dependency, like [`yarn why`][4].
 
 ```bash
 bundle why tzinfo
@@ -20,6 +20,7 @@ By using this software you accept the terms of the license.
 
 ```bash
 bundler plugin install bundler-why
+bundler plugin uninstall bundler-why # requires bundler 2.2.0
 ```
 
 ## Usage
@@ -35,10 +36,6 @@ This project does not accept contributions at this time.
 If you like [graphs][1], you'll enjoy knowing that Bundler uses a [directed
 acyclic graph][2] and `why` is printing all [directed paths][3] to the specified
 gem.
-
-## Inspired by
-
-[`yarn why`][4]
 
 [1]: https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)
 [2]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
