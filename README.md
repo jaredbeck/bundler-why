@@ -19,9 +19,12 @@ By using this software you accept the terms of the license.
 ## Installation
 
 ```bash
-bundler plugin install bundler-why
-bundler plugin uninstall bundler-why # requires bundler 2.2.0
+bundle plugin install bundler-why --source https://rubygems.org
+bundle plugin uninstall bundler-why # requires bundler >= 2.2.0
 ```
+
+When https://github.com/rubygems/rubygems/issues/4730 is fixed, then
+we should be able to install without the `--source https://rubygems.org`.
 
 ## Usage
 
