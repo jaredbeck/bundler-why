@@ -21,14 +21,14 @@ module Bundler
       # @return Bundler::StubSpecification
       def find_one_spec_in_set(spec_set, gem_name)
         specs = spec_set[gem_name]
-        if specs.length == 1
-          specs.first
-        else
-          raise Error, format(
-            'Expected gem name to match exactly 1 spec, got %d',
+        if specs.length != 1
+          warn format(
+            'Expected %s to match exactly 1 spec, got %d',
+            gem_name,
             specs.length
           )
         end
+        specs.first
       end
 
       # @param path Array[Bundler::StubSpecification]
@@ -41,7 +41,7 @@ module Bundler
       # @void
       def why(gem_name)
         runtime = Bundler.load
-        spec_set = runtime.specs
+        spec_set = runtime.specs # delegates to Bundler::Definition#specs
         spec = find_one_spec_in_set(spec_set, gem_name)
         traverse(spec_set, spec)
       end
