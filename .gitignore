@@ -9,3 +9,4 @@ Gemfile.lock
 /tmp/
 .idea
 .ruby-version
+*.gem
